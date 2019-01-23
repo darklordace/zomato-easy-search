@@ -1,0 +1,16 @@
+.outerTilt {
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.Tilt {
+    width: 160px;
+    height: 160px;
+}
+
+.App-logo {
+  position: fixed;
+  height: inherit;
+  width: inherit;
+  background: linear-gradient(to right, #ff6699, #33ccff, #33ccff, #ff6699);
+}
