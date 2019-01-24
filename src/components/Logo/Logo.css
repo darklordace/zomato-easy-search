@@ -1,15 +1,28 @@
 .outerTilt {
+    position: fixed;
     margin-top: 30px;
     margin-left: 30px;
 }
 
 .Tilt {
-    width: 160px;
-    height: 160px;
+    width: 144px;
+    height: 144px;
+}
+
+@media only screen and (max-width: 980px) {
+    .outerTilt {
+        position: static;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .Tilt {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .App-logo {
-  position: fixed;
   height: inherit;
   width: inherit;
   background: linear-gradient(to right, #ff6699, #33ccff, #33ccff, #ff6699);
