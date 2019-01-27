@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
 import Logo from '../components/Logo/Logo';
-
+import SearchBar from '../components/SearchBar/SearchBar'
 import 'tachyons';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './App.css';
 
 class App extends Component {
+  onSubmitSearch = (toSearch) => {
+    console.log(toSearch);
+  }
+
   render() {
     return (
       <div className="App">
-        <Logo />
-        <div className="mx-auto pt5 contents">
-          <h1>Zomato Easy Search</h1> {/* TITLE */}
-          {/* Search Bar */}
-          {/* Restaurant List */}
+        {/* Navigation Bar */}
+        <div className="all">
+          <Logo />
+          <div className="center pt4 contents">
+            <h1>Zomato Easy Search</h1> {/* TITLE */}
+            <SearchBar onSubmitSearch={this.onSubmitSearch} />
+            {/* Restaurant List */}
+          </div>
         </div>
       </div>
     );

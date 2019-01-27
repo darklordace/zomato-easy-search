@@ -25,5 +25,5 @@
 .App-logo {
   height: inherit;
   width: inherit;
-  background: linear-gradient(to right, #ff6699, #33ccff, #33ccff, #ff6699);
+  background: linear-gradient(to right, rgb(235, 115, 175), rgb(73, 165, 245), rgb(235, 115, 175));
 }
