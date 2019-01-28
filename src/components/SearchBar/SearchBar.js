@@ -27,13 +27,31 @@ class SearchBar extends Component {
 		});
 	}
 
-	onData(recordedBlob) {
+	onData = (recordedBlob) => {
 		// console.log('chunk of real-time data is: ', recordedBlob);
 	}
 
-	onStop(recordedBlob) {
-		console.log('recordedBlob is: ', recordedBlob);
-		
+	onStop = (recordedBlob) => {
+		// console.log('recordedBlob is: ', recordedBlob);
+
+		let formdata = new FormData();
+		formdata.append('soundBlob', recordedBlob.blob, recordedBlob.blobURL);
+
+		fetch(process.env.REACT_APP_API_URL + '/speechtotext', {
+			method: 'post',
+			body: formdata,
+			headers: new Headers({
+				'enctype': 'multipart/form-data' // the enctype is important to work with multer on the server
+			})
+		}).then(resp => resp.json())
+		.then(data => {
+			var input = document.getElementById('toSearch');
+			input.value = data.results[0].alternatives[0].transcript;
+			this.onInputChange({ target: { value: input.value }});
+		})
+		.catch(err => {
+			console.log(err);
+		});
 	}
 
 	onInputChange = (event) => {
