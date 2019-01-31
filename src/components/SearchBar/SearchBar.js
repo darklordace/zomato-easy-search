@@ -69,7 +69,7 @@ class SearchBar extends Component {
 	}
 
 	render() {
-		const { onSubmitSearch } = this.props;
+		const { onSubmitSearch, onRouteChange } = this.props;
 		return (
 			<div className="searchBar">
 				<input
@@ -82,7 +82,10 @@ class SearchBar extends Component {
 				</div>
 				<button
 					className="b pv2 input-reset ba b--black bg-transparent grow pointer f5 dib w-10"
-					id="submitSearch" onClick={() => onSubmitSearch(this.state.toSearch)}
+					id="submitSearch" onClick={() => {
+						onSubmitSearch(this.state.toSearch);
+						onRouteChange('submit');
+					}}
 				>Search</button>
 				<br/>
 				<div className='hide'>

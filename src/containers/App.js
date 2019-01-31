@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
 import Logo from '../components/Logo/Logo';
-import SearchBar from '../components/SearchBar/SearchBar'
+import SearchBar from '../components/SearchBar/SearchBar';
+import Title from '../components/Title/Title';
+import Result from '../components/Result/Result';
+import Instructions from '../components/Instructions/Instructions';
 import 'tachyons';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      route: ''
+    }
+  }
+
+  onRouteChange = (route) => {
+    this.setState({ route: route });
+  }
+
   onSubmitSearch = (toSearch) => {
     console.log(toSearch);
   }
@@ -12,13 +26,24 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* Navigation Bar */}
         <div className="all">
-          <Logo />
+          <div id="logo">
+            <Logo />
+          </div>
           <div className="center pt4 contents">
-            <h1>Zomato Easy Search</h1> {/* TITLE */}
-            <SearchBar onSubmitSearch={this.onSubmitSearch} />
-            {/* Restaurant List */}
+            <Title onRouteChange={this.onRouteChange} />
+            <SearchBar onSubmitSearch={this.onSubmitSearch} onRouteChange={this.onRouteChange} />
+            <div id="data" className="mt4">
+              {
+                this.state.route === 'instructions' ?
+                  <Instructions />
+                :
+                  this.state.route === 'submit' ?
+                  <Result />
+                :
+                  <div></div>
+              }
+            </div>
           </div>
         </div>
       </div>
