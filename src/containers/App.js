@@ -26,24 +26,20 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="all">
-          <div id="logo">
-            <Logo />
-          </div>
-          <div className="center pt4 contents">
-            <Title onRouteChange={this.onRouteChange} />
-            <SearchBar onSubmitSearch={this.onSubmitSearch} onRouteChange={this.onRouteChange} />
-            <div id="data" className="mt4">
-              {
-                this.state.route === 'instructions' ?
-                  <Instructions />
-                :
-                  this.state.route === 'submit' ?
-                  <Result />
-                :
-                  <div></div>
-              }
-            </div>
+        <Logo />
+        <div className="center pt4 contents">
+          <Title onRouteChange={this.onRouteChange} />
+          <SearchBar onSubmitSearch={this.onSubmitSearch} onRouteChange={this.onRouteChange} />
+          <div id="data" className="mt4">
+            {
+              this.state.route === 'instructions' ?
+                <Instructions />
+              :
+                this.state.route === 'submit' ?
+                <Result />
+              :
+                <div></div>
+            }
           </div>
         </div>
       </div>
